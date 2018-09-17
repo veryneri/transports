@@ -9,13 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   AlertViewModule,
+  CheckboxModule,
   SelectModule,
   SpinnerModule
 } from './_components';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AssignmentsComponent } from './assignments/assignments.component';
 import { EmployeesComponent } from './employees/employees.component';
 import {
+  AssignmentService,
   EmployeeService,
   VehicleService
 } from './services';
@@ -26,6 +29,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AssignmentsComponent,
     EmployeesComponent,
     HomeComponent,
     VehiclesComponent
@@ -35,6 +39,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    CheckboxModule,
     FormsModule,
     HttpModule,
     PipesModule,
@@ -43,6 +48,7 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
     SpinnerModule
   ],
   providers: [
+    AssignmentService,
     EmployeeService,
     VehicleService
   ],

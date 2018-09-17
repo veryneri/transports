@@ -1,0 +1,120 @@
+<transports-alert-view #addAssignmentAlertView>
+  <div class="alert-view-content">
+    <svg
+      (click)="hideAddAssignmentAlertView()"
+      width="30px"
+      height="30px"
+      viewBox="0 0 30 30"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <polygon
+        id="Fill-3"
+        fill="#ccc"
+        points="19.8271031 7.8 22.2319079 10.199232 10.2048048 22.2 7.8 19.799232"
+      ></polygon>
+      <polygon
+        id="Fill-5"
+        fill="#ccc"
+        points="10.2048048 7.8 22.2319079 19.799232 19.8271031 22.2 7.8 10.199232"
+      ></polygon>
+    </svg>
+    <div class="header text-center">
+      Asignación Nueva
+    </div>
+    <div class="message text-center">
+        <div class="col">
+          <p >Ingresa los datos de la asignación. Los campos con (*) son requeridos</p>
+
+          <form>
+            <transports-select
+              [options]="employees"
+              [defaultValue]="currentAssignment.employee"
+              name="employee"
+              placeholder="* Conductor"
+              (onChange)="onChangeEmployee($event)"
+            ></transports-select>
+            <transports-select
+              [options]="vehicles"
+              [defaultValue]="currentAssignment.vehicle"
+              name="vehicle"
+              placeholder="* Vehículo"
+              (onChange)="onChangeVehicle($event)"
+            ></transports-select>
+            <label class="checkbox">Activo
+              <input
+                type="checkbox"
+                [(ngModel)]="currentAssignment.active"
+                [ngModelOptions]="{standalone: true}"
+                [checked]="currentAssignment.active"
+              >
+              <span class="checkmark"></span>
+            </label>
+          </form>
+        </div>
+    </div>
+    <div class="footer">
+      <button
+        class="btn"
+        (click)="saveAssignment()"
+        [disabled]="!currentAssignment.employee || !currentAssignment.vehicle || loading"
+      >Guardar</button>
+    </div>
+  </div>
+</transports-alert-view>
+<div class="container color-dark">
+  <div class="header">
+    <h3>Vehículos</h3>
+    <a class="btn" (click)="showAddAssignmentAlertView()"> Agregar</a>
+  </div>
+</div>
+<div class="container container-table color-light" [@assignments]="assignments.length">
+  <table class="col">
+    <tr *ngFor="let assignment of assignments; let i = index">
+      <td
+        (click)="showAssignmentDetail(assignment._id)"
+        class="life-container"
+        >
+        {{ assignment.employee.label }}
+      </td>
+      <td
+        (click)="showAssignmentDetail(assignment._id)"
+        class="life-container"
+        >
+        {{ assignment.vehicle.label }}
+      </td>
+      <td
+        (click)="showAssignmentDetail(assignment._id)"
+        class="life-container"
+        >
+        {{ assignment.active | genericStatus }}
+      </td>
+      <td class="life-container">
+        <div class="options-container">
+          <div
+            class="option"
+            (click)="deleteAssignment(assignment._id)"
+            >
+            <i class="fa fa-times"></i>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <!-- <div class="col">
+    <div
+      class="life-container"
+      *ngFor="let assignment of assignments; let i = index"
+      (click)="showAssignmentDetail(assignment._id)">
+      <div class="data-container">
+        {{ assignment.name }} {{ assignment.fLastName }} {{ assignment.mLastName }}
+      </div>
+      <div class="options-container">
+        <div class="option">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>

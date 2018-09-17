@@ -21,7 +21,7 @@ export class SelectComponent implements OnInit, OnChanges {
   @Input() options: Array<SelectOption> = [];
   @Output() onChange = new EventEmitter<SelectOption>();
   active = false;
-  label:string = '';
+  label = '';
 
   constructor() { }
 
