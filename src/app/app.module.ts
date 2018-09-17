@@ -15,15 +15,20 @@ import {
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EmployeesComponent } from './employees/employees.component';
+import {
+  EmployeeService,
+  VehicleService
+} from './services';
 import { HomeComponent } from './home/home.component';
-import { EmployeeService } from './services';
 import { PipesModule } from './_pipes/pipes.module';
+import { VehiclesComponent } from './vehicles/vehicles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    EmployeesComponent,
     HomeComponent,
-    EmployeesComponent
+    VehiclesComponent
   ],
   imports: [
     AlertViewModule,
@@ -38,7 +43,8 @@ import { PipesModule } from './_pipes/pipes.module';
     SpinnerModule
   ],
   providers: [
-    EmployeeService
+    EmployeeService,
+    VehicleService
   ],
   bootstrap: [AppComponent]
 })

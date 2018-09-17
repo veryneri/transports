@@ -1,0 +1,67 @@
+:host {
+  .container {
+    display: grid;
+    padding: 1em 1.3em;
+
+    &.container-table {
+      /* min-height: 200px; */
+    }
+
+    .header {
+      h3 {
+        display: inline-block;
+      }
+
+      a {
+        display: inline-block;
+        margin-left: 15px;
+        border: 0;
+        padding: .8em 2em;
+        background: #a5f883;
+        color: #003a61;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: .8em;
+      }
+    }
+  }
+
+  .color-dark {
+    background: #2885c4;
+  }
+
+  .color-light {
+    background: #57b3f1;
+  }
+
+  .life-container {
+    background: #3fa0e1;
+    padding: 0.5em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+
+    .data-container,
+    .options-container {
+      display: inline-block;
+    }
+
+    .data-container {
+      width: 90%;
+    }
+
+    .options-container {
+      width: 10%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  /*
+    danger: #f24d4d
+    success: #4df28e, #4df2aa, #10c274
+
+  */
+}

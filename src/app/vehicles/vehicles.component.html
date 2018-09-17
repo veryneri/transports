@@ -1,0 +1,106 @@
+<transports-alert-view #addVehicleAlertView>
+  <div class="alert-view-content">
+    <svg
+      (click)="hideAddVehicleAlertView()"
+      width="30px"
+      height="30px"
+      viewBox="0 0 30 30"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <polygon
+        id="Fill-3"
+        fill="#ccc"
+        points="19.8271031 7.8 22.2319079 10.199232 10.2048048 22.2 7.8 19.799232"
+      ></polygon>
+      <polygon
+        id="Fill-5"
+        fill="#ccc"
+        points="10.2048048 7.8 22.2319079 19.799232 19.8271031 22.2 7.8 10.199232"
+      ></polygon>
+    </svg>
+    <div class="header text-center">
+      Vehículo Nuevo
+    </div>
+    <div class="message text-center">
+        <div class="col">
+          <p >Ingresa los datos del nuevo vehículo. Los campos con (*) son requeridos</p>
+
+          <form [formGroup]="vehicleForm">
+            <input
+              class="txt"
+              formControlName="licensePlate"
+              [(ngModel)]="currentVehicle.licensePlate"
+              name="licensePlate"
+              placeholder="* Placas"
+              type="text"
+            >
+            <transports-select
+              [options]="vehicleTypes"
+              [defaultValue]="currentVehicle.vehicleType"
+              name="vehicleType"
+              placeholder="* Tipo de vehículo"
+              (onChange)="onChangeVehicleType($event)"
+            ></transports-select>
+          </form>
+        </div>
+    </div>
+    <div class="footer">
+      <button
+        class="btn"
+        (click)="saveVehicle()"
+        [disabled]="vehicleForm.invalid || !currentVehicle.vehicleType || loading"
+      >Guardar</button>
+    </div>
+  </div>
+</transports-alert-view>
+<div class="container color-dark">
+  <div class="header">
+    <h3>Vehículos</h3>
+    <a class="btn" (click)="showAddVehicleAlertView()"> Agregar</a>
+  </div>
+</div>
+<div class="container container-table color-light" [@vehicles]="vehicles.length">
+  <table class="col">
+    <tr *ngFor="let vehicle of vehicles; let i = index">
+      <td
+        (click)="showVehicleDetail(vehicle._id)"
+        class="life-container"
+        >
+        {{ vehicle.vehicleType - 1 | vehicleType }}
+      </td>
+      <td
+        (click)="showVehicleDetail(vehicle._id)"
+        class="life-container"
+        >
+        {{ vehicle.licensePlate }}
+      </td>
+      <td class="life-container">
+        <div class="options-container">
+          <div
+            class="option"
+            (click)="deleteVehicle(vehicle._id)"
+            >
+            <i class="fa fa-times"></i>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <!-- <div class="col">
+    <div
+      class="life-container"
+      *ngFor="let vehicle of vehicles; let i = index"
+      (click)="showVehicleDetail(vehicle._id)">
+      <div class="data-container">
+        {{ vehicle.name }} {{ vehicle.fLastName }} {{ vehicle.mLastName }}
+      </div>
+      <div class="options-container">
+        <div class="option">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>

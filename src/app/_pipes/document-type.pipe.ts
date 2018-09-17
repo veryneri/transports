@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DOCUMENT_TYPES } from '../_constants/document-type.constant';
+import { DOCUMENT_TYPES } from '../_constants';
 
 @Pipe({
   name: 'documentType'
