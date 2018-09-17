@@ -20,7 +20,8 @@ import {
 } from '@angular/forms';
 
 import { AlertViewComponent } from '../_components';
-import { Employee } from '../_interfaces';
+import { DOCUMENT_TYPES } from '../_constants';
+import { Employee } from '../_interfaces/';
 import { EmployeeService } from '../services';
 import { SelectOption } from '../_components/select/select-option.interface';
 import { Subscription } from 'rxjs/Subscription';
@@ -125,11 +126,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   @ViewChild(AlertViewComponent) addEmployeeAlertView: AlertViewComponent;
   currentEmployee: Employee = undefined;
-  documentTypes: Array<SelectOption> = [
-    { value: '1', label: 'INE' },
-    { value: '2', label: 'Licencia' },
-    { value: '3', label: 'Pasaporte' }
-  ];
+  documentTypes: Array<SelectOption> = [];
   employees: any = [];
   employeeForm: FormGroup;
   loading = true;
@@ -144,6 +141,12 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.clearCurrentEmployee();
+    this.documentTypes = DOCUMENT_TYPES.map((label, index) => (
+      {
+        label,
+        value: index + 1
+      }
+    ));
     this.employeeForm = this._formBuilder.group({
       name: ['', Validators.required],
       fLastName: ['', Validators.required],
