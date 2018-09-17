@@ -1,0 +1,47 @@
+<!-- <div class="select-container">
+  <ul class="select">
+    <li>
+      <input
+        class="select-close"
+        type="radio"
+        name="{{ name }}"
+        id="{{ name }}-close"
+        value=""
+      />
+      <span
+        class="select-label select-label-placeholder">
+        {{ placeholder }}
+      </span>
+    </li>
+
+    <li class="select-items">
+      <input class="select-expand" type="radio" name="{{ name }}" id="{{ name }}-opener"/>
+      <label class="select-close-label" for="{{ name }}-close"></label>
+
+      <ul class="select-options">
+        <li class="select-option" *ngFor="let option of options; let i = index;" (click)="selected(option)">
+          <input class="select-input" type="radio" name="{{ name }}" id="{{ name }}-{{ option.label }}"/>
+          <label class="select-label" for="{{ name }}-{{ option.label }}" (click)="selected(option)">
+            {{ option.label }}
+          </label>
+        </li>
+      </ul>
+      <label class="select-expand-label" for="{{ name }}-opener"></label>
+    </li>
+  </ul>
+</div> -->
+
+<div class="cs-select cs-skin-elastic" [class.cs-active]="active" tabindex="0" (click)="toggle()">
+  <span class="cs-placeholder">{{ placeholder }}</span>
+    <div class="cs-options">
+      <ul>
+        <li
+          class="cs-selected"
+          [class.cs-selected]="option.selected"
+          *ngFor="let option of options; let i = index;"
+          (click)="selected(option)">
+          <span>{{ option.label }}</span>
+        </li>
+      </ul>
+    </div>
+</div>
