@@ -7,6 +7,9 @@
     {
       "root": "src",
       "outDir": "dist",
+      "addons": [
+        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
+      ],
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,7 +22,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "transports",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/font-awesome/scss/font-awesome.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
