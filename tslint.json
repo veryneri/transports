@@ -118,13 +118,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "transports",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "transports",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
