@@ -27,7 +27,7 @@ export class SelectComponent implements OnInit, OnChanges {
   ngOnInit() {
     console.log(this.defaultValue);
     if (this.defaultValue) {
-      this.setDefaultOrSelectedOption(this.defaultValue);
+      this.setDefaultOrSelectedOption(this.defaultValue + '');
     }
   }
 
@@ -41,7 +41,7 @@ export class SelectComponent implements OnInit, OnChanges {
   setDefaultOrSelectedOption(selectedOptionValue: string) {
     this.options.forEach(opt => {
       opt.selected = false;
-      if (opt.value === selectedOptionValue) {
+      if (opt.value + '' === selectedOptionValue) {
         this.placeholder = opt.label;
         opt.selected = true;
       }
