@@ -1,0 +1,147 @@
+<transports-alert-view #addEmployeeAlertView>
+  <div class="alert-view-content">
+    <svg
+      (click)="hideAddEmployeeAlertView()"
+      width="30px"
+      height="30px"
+      viewBox="0 0 30 30"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <polygon
+        id="Fill-3"
+        fill="#ccc"
+        points="19.8271031 7.8 22.2319079 10.199232 10.2048048 22.2 7.8 19.799232"
+      ></polygon>
+      <polygon
+        id="Fill-5"
+        fill="#ccc"
+        points="10.2048048 7.8 22.2319079 19.799232 19.8271031 22.2 7.8 10.199232"
+      ></polygon>
+    </svg>
+    <div class="header text-center">
+      Conductor Nuevo
+    </div>
+    <div class="message text-center">
+        <div class="col">
+          <p >Ingresa los datos del nuevo conductor. Los campos con (*) son requeridos</p>
+
+          <form [formGroup]="employeeForm">
+            <!--<div *ngIf="employeeForm.name.invalid &&
+              (employeeForm.name.dirty || employeeForm.name.touched)">
+              <div *ngIf="employeeForm.name.errors.required">
+                Name is required.
+              </div>
+            </div>-->
+            <!--<div ngIf="employeeForm.get('name').hasError(validation.type) && (employeeForm.get('name').dirty || employeeForm.get('name').touched)">
+              <div *ngIf="employeeForm.name.errors.required">
+                Name is required.
+              </div>
+            </div>-->
+            <input
+              class="txt"
+              formControlName="name"
+              [(ngModel)]="currentEmployee.name"
+              name="name"
+              placeholder="* Nombre"
+              type="text"
+            >
+            <input
+              type="text"
+              class="txt"
+              name="fLastName"
+              placeholder=" * Apellido Paterno"
+              formControlName="fLastName"
+              [(ngModel)]="currentEmployee.fLastName"
+            >
+            <input
+              type="text"
+              class="txt"
+              name="mLastName"
+              placeholder="Apellido Materno"
+              formControlName="mLastName"
+              [(ngModel)]="currentEmployee.mLastName"
+            >
+            <transports-select
+              [options]="documentTypes"
+              [defaultValue]="currentEmployee.documentType"
+              name="documentType"
+              placeholder="* Tipo de documento"
+              (onChange)="onChangeDocumentType($event)"
+            ></transports-select>
+            <input
+              type="text"
+              class="txt"
+              name="documentNumber"
+              placeholder="* Registro de documento"
+              formControlName="documentNumber"
+              [(ngModel)]="currentEmployee.documentNumber"
+            >
+          </form>
+        </div>
+    </div>
+    <div class="footer">
+      <button
+        class="btn"
+        (click)="saveEmployee()"
+        [disabled]="employeeForm.invalid || !currentEmployee.documentType || loading"
+      >Guardar</button>
+    </div>
+  </div>
+</transports-alert-view>
+<div class="container color-dark">
+  <div class="header">
+    <h3>Conductores</h3>
+    <a class="btn" (click)="showAddEmployeeAlertView()"> Agregar</a>
+  </div>
+</div>
+<div class="container container-table color-light" [@employees]="employees.length">
+  <table class="col">
+    <tr *ngFor="let employee of employees; let i = index">
+      <td
+        (click)="showEmployeeDetail(employee._id)"
+        class="life-container"
+        >
+        {{ employee.name }} {{ employee.fLastName }} {{ employee.mLastName }}
+      </td>
+      <td
+        (click)="showEmployeeDetail(employee._id)"
+        class="life-container"
+        >
+        {{ employee.documentType - 1 | documentType }}
+      </td>
+      <td
+        (click)="showEmployeeDetail(employee._id)"
+        class="life-container"
+        >
+        {{ employee.documentNumber }}
+      </td>
+      <td class="life-container">
+        <div class="options-container">
+          <div
+            class="option"
+            (click)="deleteEmployee(employee._id)"
+            >
+            <i class="fa fa-times"></i>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <!-- <div class="col">
+    <div
+      class="life-container"
+      *ngFor="let employee of employees; let i = index"
+      (click)="showEmployeeDetail(employee._id)">
+      <div class="data-container">
+        {{ employee.name }} {{ employee.fLastName }} {{ employee.mLastName }}
+      </div>
+      <div class="options-container">
+        <div class="option">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>
