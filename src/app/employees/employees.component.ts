@@ -166,7 +166,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     this.currentEmployee = {
       _id: undefined,
       name: '',
-      fLastname: '',
+      fLastName: '',
       mLastName: '',
       documentNumber: '',
       documentType: undefined

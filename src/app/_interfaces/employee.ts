@@ -2,7 +2,7 @@ export interface Employee {
   _id?: string;
   documentNumber: string;
   documentType: number;
-  fLastname: string;
+  fLastName: string;
   mLastName?: string;
   name: string;
 }
