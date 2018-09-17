@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+  - Run `npm install` in the root of the project.
+
   - Create a file named `src/app/app.config.ts` (template: `src/app/app.config.example.ts`).
 
   - Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
